@@ -1,0 +1,135 @@
+# [    2.692070] audit: type=1400 audit(946702811.040:3): avc:  denied  { create } for  pid=1 comm="init" name="sdcard" scontext=u:r:init:s0 tcontext=u:object_r:tmpfs:s0 tclass=lnk_file permissive=1
+
+allow init tmpfs:lnk_file create_file_perms;
+
+# [    4.723371] audit: type=1400 audit(946702813.090:4): avc:  denied  { mounton } for  pid=86 comm="init" path="/cache" dev="rootfs" ino=8118 scontext=u:r:init:s0 tcontext=u:object_r:cache_file:s0 tclass=dir permissive=1
+allow init { cache_file storage_file configfs }:dir mounton;
+
+# /config
+allow init configfs:dir create_dir_perms;
+
+allow init configfs:{ file lnk_file } create_file_perms;
+
+
+##audit: type=1400 audit(4.500:3): avc:  denied  { create } for  pid=1 comm="init" name="sdcard" scontext=u:r:init:s0 tcontext=u:object_r:tmpfs:s0 tclass=lnk_file permissive=1
+allow init tmpfs:lnk_file {create};
+
+#
+##audit: type=1400 audit(4.520:4): avc:  denied  { write } for  pid=1 comm="init" name="cpu" dev="proc" ino=4026531951 scontext=u:r:init:s0 tcontext=u:object_r:proc:s0 tclass=dir permissive=1
+allow init proc:dir {write};
+
+#
+##audit: type=1400 audit(4.540:5): avc:  denied  { add_name } for  pid=1 comm="init" name="alignment" scontext=u:r:init:s0 tcontext=u:object_r:proc:s0 tclass=dir permissive=1
+allow init proc:dir {add_name};
+
+#
+##avc:  denied  { create } for  pid=1 comm="init" name="alignment" scontext=u:r:init:s0 tcontext=u:object_r:proc:s0 tclass=file permissive=1
+allow init proc:file {create};
+
+#
+##avc:  denied  { create } for  pid=1 comm="init" name="cpu.rt_period_us" scontext=u:r:init:s0 tcontext=u:object_r:cgroup:s0 tclass=file permissive=1
+allow init cgroup:file {create};
+
+##avc:  denied  { sys_module } for  pid=1 comm="init" capability=16  scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=capability permissive=1
+allow init init:capability {sys_module};
+
+##avc:  denied  { module_load } for  pid=1 comm="init" path="/system/modules/pwm-tiehrpwm.ko" dev="mmcblk0p2" ino=1332 scontext=u:r:init:s0 tcontext=u:object_r:system_file:s0 tclass=system permissive=1
+allow init system_file:system {module_load};
+
+##avc: denied { write } for pid=1 comm="init" name="queue" dev="sysfs" ino=10209 scontext=u:r:init:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+#
+allow init sysfs:dir {write};
+
+##avc: denied { add_name } for pid=1 comm="init" name="read_ahead_kb" scontext=u:r:init:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+#
+allow init sysfs:dir {add_name};
+
+##avc: denied { create } for pid=1 comm="init" name="read_ahead_kb" scontext=u:r:init:s0 tcontext=u:object_r:sysfs:s0 tclass=file permissive=1
+allow init sysfs:file {create};
+
+##avc: denied { create } for pid=1 comm="init" name="idVendor" scontext=u:r:init:s0 tcontext=u:object_r:configfs:s0 tclass=file permissive=1
+allow init configfs:file {create};
+
+##avc: denied { write } for pid=1 comm="init" name="idVendor" dev ="configfs" ino=4954 scontext=u:r:init:s0 tcontext=u:object_r:configfs:s0 tclass=file permissive=1
+allow init configfs:file {write};
+
+##avc:  denied  { set } for property=qemu.gles pid=200 uid=1003 gid=1003 scontext=u:r:bootanim:s0 tcontext=u:object_r:default_prop:s0 tclass=property_service permissive=1
+##TODO: Never allow problem! To be fixed!
+#allow bootanim default_prop:property_service {set};
+
+##avc: denied { write } for pid=13 comm="kdevtmpfs" name="/" dev="devtmpfs" ino=3 scontext=u:r:kernel:s0 tcontext=u:object_r:device:s0 tclass=dir permissive=1
+allow kernel device:dir {write};
+
+##avc: denied { mknod } for pid=13 comm="kdevtmpfs" capability=27 scontext=u:r:kernel:s0 tcontext=u:r:kernel:s0 tclass=capability permissive=1
+allow kernel kernel:capability {mknod};
+
+##avc: denied { add_name } for pid=13 comm="kdevtmpfs" name="usb_accessory" scontext=u:r:kernel:s0 tcontext=u:object_r:device:s0 tclass=dir permissive=1
+allow kernel device:dir {add_name};
+
+##avc: denied { create } for pid=13 comm="kdevtmpfs" name="usb_accessory" scontext=u:r:kernel:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+allow kernel device:chr_file {create};
+
+##avc: denied { setattr } for pid=13 comm="kdevtmpfs" name="usb_accessory" dev="devtmpfs" ino=4967 scontext=u:r:kernel:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+allow kernel device:chr_file {setattr};
+
+##avc: denied { module_request } for pid=1 comm="init" kmod="usbfunc:mtp" scontext=u:r:init:s0 tcontext=u:r:kernel:s0 tclass=system permissive=1
+allow init kernel:system {module_request};
+
+##avc: denied { create } for pid=1 comm="init" name="b.1" scontext=u:r:init:s0 tcontext=u:object_r:configfs:s0 tclass=lnk_file permissive=1
+allow init configfs:lnk_file {create};
+
+##avc: denied { read write } for pid=132 comm="sh" path="/dev/ttyO0" dev="tmpfs" ino=4543 scontext=u:r:shell:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+##TODO: Never allow problem! To be fixed!
+#allow shell device:chr_file {read write};
+
+##avc: denied { getattr } for pid=141 comm="mediacodec" path="/vendor" dev="rootfs" ino=3545 scontext=u:r:mediacodec:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=1
+allow mediacodec rootfs:lnk_file {getattr};
+
+##avc: denied { getattr } for pid=132 comm="sh" path="/dev/ttyO0" dev="tmpfs" ino=4543 scontext=u:r:shell:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+allow shell device:chr_file {getattr};
+
+##avc: denied { ioctl } for pid=132 comm="sh" path="/dev/ttyO0" dev="tmpfs" ino=4543 ioctlcmd=0x5401 scontext=u:r:shell:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+#
+allow shell device:chr_file {ioctl};
+
+##avc: denied { getattr } for pid=142 comm="mediadrmserver" path="/vendor" dev="rootfs" ino=3545 scontext=u:r:mediadrmserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=1
+allow mediadrmserver rootfs:lnk_file {getattr};
+
+##avc: denied { wake_alarm } for pid=125 comm="healthd" capability=35 scontext=u:r:healthd:s0 tcontext=u:r:healthd:s0 tclass=capability2 permissive=1
+allow healthd healthd:capability2 { wake_alarm};
+
+##avc: denied { write } for pid=1 comm="init" name="android0" dev="sysfs" ino=10732 scontext=u:r:init:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+allow init sysfs:dir {write};
+
+##avc: denied { add_name } for pid=1 comm="init" name="enable" scontext=u:r:init:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+allow init sysfs:dir {add_name};
+
+##avc: denied { create } for pid=1 comm="init" name="enable" scontext=u:r:init:s0 tcontext=u:object_r:sysfs:s0 tclass=file permissive=1
+allow init sysfs:file {create};
+
+##avc: denied { create } for pid=1 comm="init" name="configuration" scontext=u:r:init:s0 tcontext=u:object_r:configfs:s0 tclass=file permissive=1
+##allow init configfs:file {create}
+#
+#
+##avc: denied { write } for pid=1 comm="init" name="configuration" dev="configfs" ino=5283 scontext=u:r:init:s0 tcontext=u:object_r:configfs:s0 tclass=file permissive=1
+##allow init configfs:file {write}
+#
+#
+##avc: denied { unlink } for pid=1 comm="init" name="f1" dev="configfs" ino=5284 scontext=u:r:init:s0 tcontext=u:object_r:configfs:s0 tclass=lnk_file permissive=1
+allow init configfs:lnk_file {unlink};
+
+##avc: denied { getattr } for pid=200 comm="bootanimation" path="/vendor" dev="rootfs" ino=3545 scontext=u:r:bootanim:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=1
+allow bootanim rootfs:lnk_file {getattr};
+
+##avc: denied { write } for pid=200 comm="BootAnimation" name="property_service" dev="tmpfs" ino=4529 scontext=u:r:bootanim:s0 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=1
+allow bootanim property_socket:sock_file {write};
+
+##avc: denied { connectto } for pid=200 comm="BootAnimation" path="/dev/socket/property_service" scontext=u:r:bootanim:s0 tcontext=u:r:init:s0 tclass=unix_stream_socket permissive=1
+allow bootanim init:unix_stream_socket {connectto};
+
+##avc: denied { execmem } for pid=200 comm="BootAnimation" scontext=u:r:bootanim:s0 tcontext=u:r:bootanim:s0 tclass=process permissive=1
+allow bootanim bootanim:process {execmem};
+
+##avc: denied { execute } for pid=200 comm="BootAnimation" path="/dev/ashmem" dev="tmpfs" ino=4608 scontext=u:r:bootanim:s0 tcontext=u:object_r:ashmem_device:s0 tclass=chr_file permissive=1
+allow bootanim ashmem_device:chr_file {execute};
+

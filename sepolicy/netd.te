@@ -1,0 +1,16 @@
+##avc: denied { sys_module } for pid=145 comm="Binder:145_2" capability=16 scontext=u:r:netd:s0 tcontext=u:r:netd:s0 tclass=capability permissive=1
+#
+allow netd netd:capability {sys_module};
+
+#
+##avc: denied { module_request } for pid=11729 comm="netd" kmod="net-pf-16-proto-5" scontext=u:r:netd:s0 tcontext=u:r:kernel:s0 tclass=system permissive=1
+allow netd kernel:system {module_request};
+
+#
+##avc: denied { sys_module } for pid=11729 comm="Binder:11729_2" capability=16 scontext=u:r:netd:s0 tcontext=u:r:netd:s0 tclass=capability permissive=1
+allow netd netd:capability {sys_module};
+
+##avc: denied { call } for pid=410 comm="service" scontext=u:r:shell:s0 tcontext=u:r:netd:s0 tclass=binder permissive=1
+##TODO: Never allow problem. To be fixed!
+#allow shell netd:binder call;
+

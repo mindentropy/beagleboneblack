@@ -1,0 +1,21 @@
+#######################
+## Regular device mount
+##
+## Format: dev_mount <label> <mount_point> <part> <sysfs_path1...>
+## label        - Label for the volume
+## mount_point  - Where the volume will be mounted
+## part         - Partition # (1 based), or 'auto' for first usable partition.
+## <sysfs_path> - List of sysfs paths to source devices
+######################
+# Mounts the first usable partition of the specified device
+#
+#
+#
+# See: https://android.googlesource.com/platform/docs/source.android.com/+/android-4.2.1_r1.1/src/tech/storage/index.md
+
+#Debian:/sys/devices/platform/ocp/48060000.mmc/mmc_host/mmc0
+#dev_mount sdcard /dev/sdcard1 4 /devices/platform/omap/omap_hsmmc.0/mmc_host/mmc0
+dev_mount sdcard /dev/sdcard1 4 /sys/devices/platform/ocp/48060000.mmc/mmc_host/mmc0
+
+#Debian: /sys/devices/platform/ocp/47400000.usb ??
+#dev_mount usb /dev/usb1 auto /devices/platform/omap/musb-ti18xx/mmc-hdrc.1/usb1

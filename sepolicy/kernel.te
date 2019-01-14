@@ -1,0 +1,19 @@
+##avc: denied { write } for pid=13 comm="kdevtmpfs" name="/" d ev="devtmpfs" ino=3 scontext=u:r:kernel:s0 tcontext=u:object_r:device:s0 tclass=dir permissive=1
+allow kernel device:dir {write};
+
+#
+##avc: denied { mknod } for pid=13 comm="kdevtmpfs" capability =27 scontext=u:r:kernel:s0 tcontext=u:r:kernel:s0 tclass=capability permissive=1
+allow kernel device:capability {mknod};
+
+#
+##avc: denied { add_name } for pid=13 comm="kdevtmpfs" name="ptp0" scontext=u:r:kernel:s0 tcontext=u:object_r:device:s0 tclass=dir permissive=1
+allow kernel device:dir {add_name};
+
+#
+##avc: denied { create } for pid=13 comm="kdevtmpfs" name="ptp0" scontext=u:r:kernel:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+allow kernel device:chr_file {create};
+
+#
+##avc: denied { setattr } for pid=13 comm="kdevtmpfs" name="ptp0" dev="devtmpfs" ino=12861 scontext=u:r:kernel:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+allow kernel device:chr_file {setattr};
+

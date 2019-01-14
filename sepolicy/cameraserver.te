@@ -1,0 +1,4 @@
+#avc: denied { getattr } for pid=136 comm="cameraserver" path="/vendor" dev="rootfs" ino=3545 scontext=u:r:cameraserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=1
+allow cameraserver rootfs:lnk_file {getattr};
+
+

@@ -1,0 +1,36 @@
+##avc: denied { write } for pid=630 comm="zygote" name="trace_marker" dev="tracefs" ino=62 scontext=u:r:zygote:s0 tcontext=u:object_r:debugfs_tracing:s0 tclass=file permissive=1
+##avc: denied { open } for pid=630 comm="zygote" path="/sys/kernel/debug/tracing/trace_marker" dev="tracefs" ino=62 scontext=u:r:zygote:s0 tcontext=u:object_r:debugfs_tracing:s0 tclass=file permissive=1
+#
+allow zygote debugfs_tracing:file {write};
+
+allow zygote debugfs_tracing:file {open};
+
+#
+##avc:  denied  { set } for property=qemu.gles pid=134 uid=0 gid=0 scontext=u:r:zygote:s0 tcontext=u:object_r:default_prop:s0 tclass=property_service permissive=1
+##TODO: Never allow problem. To be fixed!!
+#allow zygote default_prop:property_service set;
+
+#
+##avc: denied { write } for pid=134 comm="zygote" name="trace_marker" dev="tracefs" ino=62 scontext=u:r:zygote:s0 tcontext=u:object_r:debugfs_tracing:s0 tclass=file permissive=1
+##allow zygote debugfs_tracing:file {write}
+#
+##avc: denied { open } for pid=134 comm="zygote" path="/sys/kernel/debug/tracing/trace_marker" dev="tracefs" ino=62 scontext=u:r:zygote:s0 tcontext=u:object_r:debugfs_tracing:s0 tclass=file permissive=1
+##allow zygote debugfs_tracing:file {open}
+#
+##avc: denied { write } for pid=11725 comm="main" name="property_service" dev="tmpfs" ino=4529 scontext=u:r:zygote:s0 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=1
+#
+#
+allow zygote property_socket:sock_file {write};
+
+##avc: denied { connectto } for pid=11725 comm="main" path="/dev/socket/property_service" scontext=u:r:zygote:s0 tcontext=u:r:init:s0 tclass=unix_stream_socket permissive=1
+#
+allow zygote init:unix_stream_socket {connectto};
+
+##avc: denied { getattr } for pid=11725 comm="main" path="/sys/kernel/debug/tracing/trace_marker" dev="tracefs" ino=62 scontext=u:r:zygote:s0 tcontext=u:object_r:debugfs_tracing:s0 tclass=file permissive=1
+allow zygote debugfs_tracing:file {getattr};
+
+##avc: denied { write } for pid=12208 comm="main" name="trace_marker" dev="tracefs" ino=62 scontext=u:r:zygote:s0 tcontext=u:object_r:debugfs_tracing:s0 tclass=file permissive=1
+#allow zygote debugfs_tracing:file {write}
+#
+##avc: denied { open } for pid=12208 comm="main" path="/sys/kernel/debug/tracing/trace_marker" dev="tracefs" ino=62 scontext=u:r:zygote:s0 tcontext=u:object_r:debugfs_tracing:s0 tclass=file permissive=1 
+##allow zygote debugfs_tracing:file {open}

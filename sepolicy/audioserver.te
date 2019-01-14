@@ -1,0 +1,3 @@
+#avc: denied { getattr } for pid=135 comm="audioserver" path="/vendor" dev="rootfs" ino=3545 scontext=u:r:audioserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=1
+allow audioserver rootfs:lnk_file {getattr};
+
