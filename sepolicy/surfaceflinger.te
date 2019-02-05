@@ -1,0 +1,11 @@
+##avc: denied { map } for pid=130 comm="surfaceflinger" path="/system/bin/surfaceflinger" dev="mmcblk0p2" ino=334 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:surfaceflinger_exec:s0 tclass=file permissive=1
+
+#allow surfaceflinger surfaceflinger_exec:file {map};
+
+##avc: denied { map } for pid=130 comm="surfaceflinger" path="/system/bin/linker" dev="mmcblk0p2" ino=223 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:system_file:s0 tclass=file permissive=1
+
+#allow surfaceflinger system_file:file {map};
+
+##avc: denied { map } for pid=130 comm="surfaceflinger" path="/dev/__properties__/properties_serial" dev="tmpfs" ino=10297 scontext=u:r:surfaceflinger:s0 tcontext=u:object_r:properties_serial:s0 tclass=file permissive=1 
+#allow surfaceflinger properties_serial:file {map};
+

@@ -1,0 +1,15 @@
+##avc:  denied  { map } for  pid=84 comm="logd" path="/sys tem/bin/logd" dev="mmcblk0p2" ino=229 scontext=u:r:logd:s0 tcontext=u:object_r:logd_exec:s0 tclass=file permissive=1
+#allow logd logd_exec:file {map};
+
+##avc:  denied  { map } for  pid=84 comm="logd" path="/system/bin/linker" dev="mmcblk0p2" ino=223 scontext=u:r:logd:s0 tcontext=u:object_r:system_file:s0 tclass=file permissive=1
+#allow logd system_file:file {map};
+
+##avc:  denied  { map } for  pid=84 comm="logd" path="/dev/__properties__/properties_serial" dev="tmpfs" ino=10297 scontext=u:r:logd:s0 tcontext=u:object_r:properties_serial:s0 tclass=file permissive=1
+#allow logd properties_serial:file {map};
+
+##avc: denied { map } for pid=84 comm="logd.writer" path="/dev/__properties__/u:object_r:log_tag_prop:s0" dev="tmpfs" ino=10282 scontext=u:r:logd:s0 tcontext=u:object_r:log_tag_prop:s0 tclass=file permissive=1
+#allow logd log_tag_prop:file {map};
+
+##avc: denied { map } for pid=84 comm="logd" path="/dev/__properties__/u:object_r:system_prop:s0" dev="tmpfs" ino=10293 scontext=u:r:logd:s0 tcontext=u:object_r:system_prop:s0 tclass=file permissive=1
+#allow logd system_prop:file {map};
+

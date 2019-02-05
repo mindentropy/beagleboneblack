@@ -7,3 +7,7 @@
 /dev/block/mmcblk0p3 /data 		ext4 	noatime,nosuid,nodev,nomblk_io_submit,errors=panic wait
 /dev/block/mmcblk0p4 /cache		ext4 	noatime,nosuid,nodev,nomblk_io_submit,errors=panic wait
 
+# Needed for low memory devices
+# Ref: https://source.android.com/devices/tech/perf/low-ram
+/dev/block/zram0 none swap defaults zramsize=209715200
+

@@ -3,6 +3,9 @@ import init.beagleboneblack.usb.rc
 on early-init
 	mount debugfs debugfs /sys/kernel/debug
 
+	##Set up zram page cluster config
+	write /proc/sys/vm/page-cluster 0
+
 on init
 	verity_load_state
 
@@ -26,13 +29,16 @@ on post-fs-data
 
 on boot
 # Boot cpu speed to 1GHz
-	write /sys/devices/system/cpu/cpu0/cpufre/scaling_setspeed 1000000
+	write /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed 1000000
 
 # Default read ahead value for sdcards
 	write /sys/block/mmcblk0/queue/read_ahead_kb 2048
 
 on fs
 	mount_all /fstab.beagleboneblack
+
+	#Mount all zram swaps
+	swapon_all /fstab.beagleboneblack
 
 	# Load modules.
 	insmod /system/modules/pwm-tiehrpwm.ko

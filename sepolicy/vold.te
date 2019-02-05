@@ -1,0 +1,27 @@
+##avc:  denied  { map } for  pid=86 comm="vold" path="/system/bin/vold" dev="mmcblk0p2" ino=376 scontext=u:r:vold:s0 tcontext=u:object_r:vold_exec:s0 tclass=file permissive=1
+#allow vold vold_exec:file {map};
+
+##avc:  denied  { map } for  pid=86 comm="vold" path="/system/bin/linker" dev="mmcblk0p2" ino=223 scontext=u:r:vold:s0 tcontext=u:object_r:system_file:s0 tclass=file permissive=1
+#allow vold system_file:file {map};
+
+##avc:  denied  { map } for  pid=86 comm="vold" path="/dev/__properties__/properties_serial" dev="tmpfs" ino=10297 scontext=u:r:vold:s0 tcontext=u:object_r:properties_serial:s0 tclass=file permissive=1
+#allow vold properties_serial:file {map};
+
+##avc: denied { map } for pid=86 comm="vold" path="/dev/__properties__/u:object_r:default_prop:s0" dev="tmpfs" ino=10270 scontext=u:r:vold:s0 tcontext=u:object_r:default_prop:s0 tclass=file permissive=1
+#allow vold default_prop:file {map};
+
+##avc: denied { map } for pid=86 comm="vold" path="/dev/__properties__/u:object_r:log_tag_prop:s0" dev="tmpfs" ino=10282 scontext=u:r:vold:s0 tcontext=u:object_r:log_tag_prop:s0 tclass=file permissive=1
+#allow vold log_tag_prop:file {map};
+
+##avc: denied { map } for pid=86 comm="vold" path="/dev/__properties__/u:object_r:logd_prop:s0" dev="tmpfs" ino=10277 scontext=u:r:vold:s0 tcontext=u:object_r:logd_prop:s0 tclass=file permissive=1
+#allow vold logd_prop:file {map};
+
+##avc: denied { map } for pid=86 comm="vold" path="/file_contexts.bin" dev="rootfs" ino=8020 scontext=u:r:vold:s0 tcontext=u:object_r:rootfs:s0 tclass=file permissive=1
+#allow vold rootfs:file {map};
+
+##avc: denied { map } for pid=86 comm="vold" path="/dev/__properties__/u:object_r:vold_prop:s0" dev="tmpfs" ino=10269 scontext=u:r:vold:s0 tcontext=u:object_r:vold_prop:s0 tclass=file permissive=1
+#allow vold vold_prop:file {map};
+
+##avc: denied { dac_read_search } for pid=86 comm="vold" capability=2 scontext=u:r:vold:s0 tcontext=u:r:vold:s0 tclass=capability permissive=1
+#allow vold vold:capability {dac_read_search};
+

@@ -38,18 +38,22 @@ PRODUCT_COPY_FILES += \
 
 # BBB has low RAM. only 512 MB.
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.config.low_ram=true \
-	config.disable_network=true \
-	config.disable_network_time=true \
-	config.disable_bluetooth=true \
-	config.disable_noncore=true \
-	config.disable_location=true \
-	config.disable_mediaproj=true \
-	config.disable_textservices=true \
-	config.disable_serial=true \
-	config.disable_textservices=true \
-	config.disable_searchmanager=true \
-	config.disable_samplingprof=true 
+	ro.config.low_ram=true
+
+################Enable disable testing#####################
+#	config.disable_network=true \
+#	config.disable_network_time=true \
+#	config.disable_bluetooth=true \
+#	config.disable_mediaproj=true \
+#	config.disable_telephony=true \
+#	config.disable_textservices=true \
+#	config.disable_location=true \
+#	config.disable_serial=true \
+#	config.disable_media=true
+#	config.disable_samplingprof=true \
+#	config.disable_searchmanager=true \
+#	config.disable_noncore=true \
+###########################################################
 
 ## Disable Red activity highlights. Meant for diagnostics
 PRODUCT_PROPERTY_OVERRIDES += \

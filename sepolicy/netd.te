@@ -14,3 +14,6 @@ allow netd netd:capability {sys_module};
 ##TODO: Never allow problem. To be fixed!
 #allow shell netd:binder call;
 
+#avc: denied { map } for pid=148 comm="ip6tables" path="/dev/__properties__/u:object_r:default_prop:s0" dev="tmpfs" ino=10270 scontext=u:r:netd:s0 tcontext=u:object_r:default_prop:s0 tclass=file permissive=1
+#allow netd default_prop:file {map};
+

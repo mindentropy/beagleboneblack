@@ -133,3 +133,27 @@ allow bootanim bootanim:process {execmem};
 ##avc: denied { execute } for pid=200 comm="BootAnimation" path="/dev/ashmem" dev="tmpfs" ino=4608 scontext=u:r:bootanim:s0 tcontext=u:object_r:ashmem_device:s0 tclass=chr_file permissive=1
 allow bootanim ashmem_device:chr_file {execute};
 
+##avc:  denied  { map } for  pid=1 comm="init" path="/file_contexts.bin" dev="rootfs" ino=8020 scontext=u:r:kernel:s0 tcontext=u:object_r:rootfs:s0 tclass=file permissive=1
+#allow kernel rootfs:file { map };
+
+##avc:  denied  { map } for  pid=1 comm="init" path="/init" dev="rootfs" ino=8022 scontext=u:r:init:s0 tcontext=u:object_r:init_exec:s0 tclass=file permissive=1
+#allow init init_exec:file {map};
+
+##avc:  denied  { map } for  pid=1 comm="init" path="/dev/__properties__/u:object_r:dalvik_prop:s0" dev="tmpfs" ino=10265 scontext=u:r:init:s0 tcontext=u:object_r:dalvik_prop:s0 tclass=file permissive=1
+#allow init dalvik_prop:file {map};
+
+##avc:  denied  { map } for  pid=1 comm="init" path="/dev/__properties__/u:object_r:config_prop:s0" dev="tmpfs" ino=10266 scontext=u:r:init:s0 tcontext=u:object_r:config_prop:s0 tclass=file permissive=1
+#allow init config_prop:file {map};
+
+##avc:  denied  { map } for  pid=1 comm="init" path="/dev/__properties__/u:object_r:nfc_prop:s0" dev="tmpfs" ino=10267 scontext=u:r:init:s0 tcontext=u:object_r:nfc_prop:s0 tclass=file permissive=1
+#allow init nfc_prop:file {map};
+
+##avc:  denied  { map } for  pid=1 comm="init" path="/dev/__properties__/u:object_r:fingerprint_prop:s0" dev="tmpfs" ino=10268 scontext=u:r:init:s0 tcontext=u:object_r:fingerprint_prop:s0 tclass=file permissive=1
+#allow init fingerprint_prop:file {map};
+
+##avc:  denied  { map } for  pid=1 comm="init" path="/dev/__properties__/u:object_r:vold_prop:s0" dev="tmpfs" ino=10269 scontext=u:r:init:s0 tcontext=u:object_r:vold_prop:s0 tclass=file permissive=1
+#allow init vold_prop:file {map};
+
+##avc:  denied  { dac_read_search } for  pid=1 comm="init" capability=2  scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=capability permissive=1
+allow init init:capability {dac_read_search};
+

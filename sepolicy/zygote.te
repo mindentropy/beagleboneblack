@@ -34,3 +34,10 @@ allow zygote debugfs_tracing:file {getattr};
 #
 ##avc: denied { open } for pid=12208 comm="main" path="/sys/kernel/debug/tracing/trace_marker" dev="tracefs" ino=62 scontext=u:r:zygote:s0 tcontext=u:object_r:debugfs_tracing:s0 tclass=file permissive=1 
 ##allow zygote debugfs_tracing:file {open}
+
+##avc: denied { map } for pid=128 comm="app_process" path="/system/bin/app_process32" dev="mmcblk0p2" ino=113 scontext=u:r:zygote:s0 tcontext=u:object_r:zygote_exec:s0 tclass=file permissive=1
+#allow zygote zygote_exec:file {map};
+
+##avc: denied { map } for pid=128 comm="app_process" path="/system/bin/linker" dev="mmcblk0p2" ino=223 scontext=u:r:zygote:s0 tcontext=u:object_r:system_file:s0 tclass=file permissive=1
+#allow zygote system_file:file {map};
+

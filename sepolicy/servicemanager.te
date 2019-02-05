@@ -1,0 +1,9 @@
+##avc: denied { map } for pid=129 comm="servicemanager" path="/system/bin/servicemanager" dev="mmcblk0p2" ino=316 scontext=u:r:servicemanager:s0 tcontext=u:object_r:servicemanager_exec:s0 tclass=file permissive=1
+#allow servicemanager servicemanager_exec:file {map};
+
+##avc: denied { map } for pid=129 comm="servicemanager" path="/system/bin/linker" dev="mmcblk0p2" ino=223 scontext=u:r:servicemanager:s0 tcontext=u:object_r:system_file:s0 tclass=file permissive=1
+#allow servicemanager system_file:file {map};
+
+##avc: denied { map } for pid=165 comm="servicemanager" path="/dev/__properties__/u:object_r:default_prop:s0" dev="tmpfs" ino=10270 scontext=u:r:servicemanager:s0 tcontext=u:object_r:default_prop:s0 tclass=file permissive=1
+#allow servicemanager default_prop:file {map};
+

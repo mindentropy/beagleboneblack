@@ -1,0 +1,21 @@
+##avc: denied { map } for pid=127 comm="healthd" path="/sbin/healthd" dev="rootfs" ino=8036 scontext=u:r:healthd:s0 tcontext=u:object_r:rootfs:s0 tclass=file permissive=1
+
+#allow healthd rootfs:file {map};
+
+##avc: denied { map } for pid=127 comm="healthd" path="/dev/__properties__/properties_serial" dev="tmpfs" ino=10297 scontext=u:r:healthd:s0 tcontext=u:object_r:properties_serial:s0 tclass=file permissive=1
+
+#allow healthd properties_serial:file {map};
+
+##avc: denied { map } for pid=127 comm="healthd" path="/dev/__properties__/u:object_r:log_tag_prop:s0" dev="tmpfs" ino=10282 scontext=u:r:healthd:s0 tcontext=u:object_r:log_tag_prop:s0 tclass=file permissive=1
+
+#allow healthd log_tag_prop:file {map};
+
+##avc: denied { map } for pid=162 comm="healthd" path="/dev/__properties__/u:object_r:logd_prop:s0" dev="tmpfs" ino=10277 scontext=u:r:healthd:s0 tcontext=u:object_r:logd_prop:s0 tclass=file permissive=1
+#allow healthd logd_prop:file {map};
+
+##avc: denied { map } for pid=165 comm="servicemanager" path="/system/bin/servicemanager" dev="mmcblk0p2" ino=316 scontext=u:r:servicemanager:s0 tcontext=u:object_r:servicemanager_exec:s0 tclass=file permissive=1
+#allow servicemanager servicemanager_exec:file {map};
+
+##avc: denied { map } for pid=165 comm="servicemanager" path="/dev/__properties__/u:object_r:default_prop:s0" dev="tmpfs" ino=10270 scontext=u:r:servicemanager:s0 tcontext=u:object_r:default_prop:s0 tclass=file permissive=1
+#allow servicemanager default_prop:file {map};
+
