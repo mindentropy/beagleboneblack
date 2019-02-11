@@ -64,6 +64,8 @@ PRODUCT_CHARACTERISTICS := tablet
 
 ## Need to explicitly specify lcd_density. Otherwise the system complains during bootup as below:
 ## "ro.sf.lcd_density must be defined as a build property"
+#PRODUCT_PROPERTY_OVERRIDES += \
+#		ro.sf.lcd_density=160
 PRODUCT_PROPERTY_OVERRIDES += \
 		ro.sf.lcd_density=160
 
