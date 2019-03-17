@@ -5,6 +5,7 @@
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/fstab.beagleboneblack:root/fstab.beagleboneblack
 
+#	$(LOCAL_PATH)/modules/pwm-tiehrpwm.ko:system/modules/pwm-tiehrpwm.ko \
 # kernel modules
 # Note: when operating with an LCD screen, tilcdc must be started after
 # cape manager has loaded the corresponding dtbo file. Hence, it is
@@ -12,11 +13,16 @@ PRODUCT_COPY_FILES += \
 # be built-ins, but it makes more sense for everything associated with the lcd
 # panel to be modular
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/modules/pwm-tiehrpwm.ko:system/modules/pwm-tiehrpwm.ko \
 	$(LOCAL_PATH)/modules/ti_am335x_tsc.ko:system/modules/ti_am335x_tsc.ko \
-	$(LOCAL_PATH)/modules/ti_am335x_tscadc.ko:system/modules/ti_am335x_tscadc.ko 
+	$(LOCAL_PATH)/modules/ti_am335x_tscadc.ko:system/modules/ti_am335x_tscadc.ko \
+	$(LOCAL_PATH)/modules/wl18xx.ko:system/modules/wl18xx.ko \
+	$(LOCAL_PATH)/modules/wlcore.ko:system/modules/wlcore.ko \
+	$(LOCAL_PATH)/modules/wlcore_sdio.ko:system/modules/wlcore_sdio.ko
 #	$(LOCAL_PATH)/modules/tilcdc.ko:system/modules/tilcdc.ko \
 #	$(LOCAL_PATH)/modules/tda998x.ko:system/modules/tda998x.ko
+
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/vendor/ti/wilink/wl18xx-fw-4.bin:system/etc/firmware/ti-connectivity/wl18xx-fw-4.bin
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/init.beagleboneblack.rc:root/init.beagleboneblack.rc \

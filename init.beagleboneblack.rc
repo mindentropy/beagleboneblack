@@ -47,6 +47,10 @@ on fs
 	# HDMI Controller
 	#insmod /system/modules/tda998x.ko
 
+	insmod /system/modules/wlcore.ko
+	insmod /system/modules/wlcore_sdio.ko
+	insmod /system/modules/wl18xx.ko
+
 	#Disable console cursor
 	write /sys/class/graphics/fbcon/cursor_blink 0
 
