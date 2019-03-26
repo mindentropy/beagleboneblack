@@ -21,9 +21,9 @@ PRODUCT_COPY_FILES += \
 #	$(LOCAL_PATH)/modules/tilcdc.ko:system/modules/tilcdc.ko \
 #	$(LOCAL_PATH)/modules/tda998x.ko:system/modules/tda998x.ko
 
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/vendor/ti/wilink/wl18xx-fw-4.bin:system/etc/firmware/ti-connectivity/wl18xx-fw-4.bin
-
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/vendor/ti/wilink/wl18xx-fw-4.bin:$(TARGET_OUT_ETC)/firmware/ti-connectivity/wl18xx-fw-4.bin
+#
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/init.beagleboneblack.rc:root/init.beagleboneblack.rc \
 	$(LOCAL_PATH)/init.beagleboneblack.usb.rc:root/init.beagleboneblack.usb.rc \
@@ -34,8 +34,14 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/mixer_paths.xml:system/etc/mixer_paths.xml \
 	$(LOCAL_PATH)/audio_policy.conf:system/etc/audio_policy.conf
 
+#PRODUCT_COPY_FILES += \
+#	frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
+#	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+#	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
+
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
+	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	device/beagleboneblack/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
@@ -45,6 +51,13 @@ PRODUCT_COPY_FILES += \
 # BBB has low RAM. only 512 MB.
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.config.low_ram=true
+
+## Add wifi related packages
+PRODUCT_PACKAGES += libwpa_client wpa_supplicant hostapd
+PRODUCT_PROPERTY_OVERRIDES += wifi.interface=wlan0 \
+							wifi.supplicant_scan_interval=15
+
+PRODUCT_PACKAGES += wl18xx-fw-4.bin
 
 ################Enable disable testing#####################
 #	config.disable_network=true \

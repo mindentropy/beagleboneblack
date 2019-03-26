@@ -1,0 +1,13 @@
+LOCAL_PATH := $(call my-dir)
+
+TI_WILINK_FW_PATH := $(TARGET_OUT_ETC)/firmware/ti-connectivity
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := wl18xx-fw-4.bin
+LOCAL_SRC_FILES := wl18xx-fw-4.bin
+LOCAL_MODULE_CLASS := FIRMWARE
+LOCAL_MODULE_PATH := $(TI_WILINK_FW_PATH)
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_OWNER := ti
+include $(BUILD_PREBUILT)
+
